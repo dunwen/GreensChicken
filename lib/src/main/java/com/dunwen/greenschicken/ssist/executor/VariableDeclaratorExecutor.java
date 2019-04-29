@@ -1,6 +1,6 @@
 package com.dunwen.greenschicken.ssist.executor;
 
-import com.dunwen.greenschicken.ssist.poor.VariablePoor;
+import com.dunwen.greenschicken.ssist.pool.VariablePool;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import java.util.List;
@@ -19,7 +19,7 @@ public class VariableDeclaratorExecutor implements Executor {
     Node valueNode = nodes.get(1);
     String name = (String) Executors.execute(nameNode);
     Object value = Executors.execute(valueNode);
-    VariablePoor.put(name, value);
+    VariablePool.put(name, value);
     return value;
   }
 }

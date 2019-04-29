@@ -1,16 +1,16 @@
-package com.dunwen.greenschicken.ssist.poor;
+package com.dunwen.greenschicken.ssist.pool;
 
 import android.app.Activity;
 import com.dunwen.greenschicken.LibContext;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
-public class VariablePoor {
-  private static VariablePoor instance;
+public class VariablePool {
+  private static VariablePool instance;
   private HashMap<String, Object> poor = new HashMap<>();
 
   static {
-    instance = new VariablePoor();
+    instance = new VariablePool();
   }
 
   public static void put(String name, Object value) {

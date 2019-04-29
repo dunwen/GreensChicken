@@ -1,10 +1,10 @@
-package com.dunwen.greenschicken.ssist.poor;
+package com.dunwen.greenschicken.ssist.pool;
 
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.dunwen.greenschicken.Utils;
 
-public class ClassPoor {
+public class ClassPool {
   private static final String[][] commonPackages = {
       { "java", "lang", "reflect" },
       { "java", "io" },
