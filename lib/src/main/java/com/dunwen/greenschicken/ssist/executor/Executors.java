@@ -3,6 +3,7 @@ package com.dunwen.greenschicken.ssist.executor;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.body.VariableDeclaratorId;
+import com.github.javaparser.ast.expr.AssignExpr;
 import com.github.javaparser.ast.expr.ClassExpr;
 import com.github.javaparser.ast.expr.FieldAccessExpr;
 import com.github.javaparser.ast.expr.IntegerLiteralExpr;
@@ -49,6 +50,8 @@ public class Executors {
       return new MethodCallExprExecutor();
     } else if (node instanceof FieldAccessExpr) {
       return new FieldAccessExprExecutor();
+    } else if (node instanceof AssignExpr){
+      return new AssignExprExecutor();
     }
     return null;
   }

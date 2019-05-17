@@ -1,29 +1,28 @@
 package com.dunwen.greenschicken.ssist.executor;
 
 import com.dunwen.greenschicken.LibContext;
+import com.dunwen.greenschicken.Utils;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.expr.AssignExpr;
-import com.github.javaparser.ast.expr.FieldAccessExpr;
+import com.github.javaparser.ast.expr.NameExpr;
 
 public class AssignExprExecutor implements Executor {
   @Override public Object execute(Node node) {
-    return null;
+    return assign((AssignExpr) node);
   }
 
   private Object assign(AssignExpr expr) {
     try {
-      FieldAccessExpr fieldAccessExpr = (FieldAccessExpr) Executors.execute(expr.getTarget());
-      if (fieldAccessExpr == null) {
+      NameExpr nameExpr = (NameExpr) expr.getTarget();
+      if (nameExpr == null) {
         return "can not find assign target";
       }
-      String name = fieldAccessExpr.getField();
-      Object scope = Executors.execute(fieldAccessExpr.getScope());
-      if (scope == null) {
-        scope = LibContext.getInstance().getCurrentActivity();
-      }
+      //写值
+      final Object execute = Executors.execute(expr.getValue());
+      Utils.setVule(nameExpr.getName(),LibContext.getInstance().getCurrentActivity(), execute);
     } catch (Exception e) {
       return "assign fail";
     }
-    return null;
+    return "assign succeed";
   }
 }

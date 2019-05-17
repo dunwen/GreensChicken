@@ -148,4 +148,16 @@ public class Utils {
     }
     return classes;
   }
+
+  public static Object setVule(String name, Object aim,Object value) {
+    if (aim == null) return null;
+    Field field = fieldOrNull(name, aim.getClass());
+    try {
+      field.setAccessible(true);
+      field.set(aim,value);
+      return field.get(aim);
+    } catch (Exception e) {
+      return null;
+    }
+  }
 }
